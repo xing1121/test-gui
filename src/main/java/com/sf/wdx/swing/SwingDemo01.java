@@ -26,22 +26,24 @@ public class SwingDemo01 extends Frame {
 	private static final long serialVersionUID = 5237217761922406524L;
 
 	private Panel p = new Panel();
-	private Button btn = new Button("OK");
-	private Button btn2 = new Button("Cancel");
+	private Button okBtn = new Button("OK");
+	private Button cancelBtn = new Button("Cancel");
 	
 	public SwingDemo01() throws HeadlessException {
 		super("SwingDemo01");
 		this.setSize(600, 400);
 		// 按钮添加点击事件
-		btn.addActionListener(new ActionListener() {
+		okBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("click");
+				Object source = e.getSource();
+				System.out.println(source);
 				JOptionPane.showMessageDialog(null, "你单击了" + e.getActionCommand());
 			}
 		});
 		// 按钮添加焦点事件
-		btn2.addFocusListener(new FocusListener() {
+		cancelBtn.addFocusListener(new FocusListener() {
 			
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -56,8 +58,8 @@ public class SwingDemo01 extends Frame {
 			}
 		});
 		// Panel默认布局为Flow流式布局
-		p.add(btn);
-		p.add(btn2);
+		p.add(okBtn);
+		p.add(cancelBtn);
 		this.add(p);
 		
 		// 添加窗口事件监听器
